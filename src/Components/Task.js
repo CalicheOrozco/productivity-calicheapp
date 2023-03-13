@@ -130,8 +130,11 @@ const Task = ({ id, task, onDelete, onDragEnd, onStart, onPause, onStop, onFinis
     const handleVisibilityChange = () => {
       if (document.hidden) {
         // verify if the task is running and pause it
-        clearInterval(timer);
-        handlePause();
+        if (task.status !== 'Completed') {
+          clearInterval(timer);
+          handlePause();
+        }
+        
         
       } 
     };
